@@ -21,6 +21,7 @@ if ($itemCount > 0) {
             "is_active" => $is_active,
             "is_blocked" => $is_blocked,
             "is_releaved" => $is_releaved,
+            "is_deleted" => $is_deleted,
         );
     }
     $response->success_response($dataArr);
