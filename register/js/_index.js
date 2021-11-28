@@ -73,7 +73,7 @@ $("#validate_mobno").click(function(){
                                     var is_blocked = result.response[i]['is_blocked'];
                                     if(is_active == 1)
                                     {
-                                        alert("is Active");
+                                        alert("is Delete");
                                     }
                                     
                         }
