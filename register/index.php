@@ -48,9 +48,9 @@
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Next"/>
                             </div>
                         </div>
-                        <div class="signup-image">
+                        <!-- <div class="signup-image">
                             <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </section>
@@ -60,3 +60,4 @@
         <script src="js/main.js"></script>
     </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
+<script src="js/_index.js" type="text/javascript"></script>
