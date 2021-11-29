@@ -11,11 +11,11 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <div class="main">
+        <div class="">
             <!-- Sign up form -->
-            <section class="signup">
-                <div class="container">
-                    <div class="signup-content">
+            <section class="">
+                <div class="">
+                    <div class="">
                         <div class="signup-form"  id="language_selection">
                             <h1 class="form-title">Choose your preferred Language</h1>
                            <input type="hidden" id="lang_value"name="lang_value"/> 
