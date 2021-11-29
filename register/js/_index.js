@@ -73,6 +73,7 @@ $("#validate_mobno").click(function(){
                                     var is_deleted = result.response[i]['is_deleted'];
                                     var is_admin = result.response[i]['is_admin'];
                                     var is_active = result.response[i]['is_active'];
+                                    var user_id = result.response[i]['user_id'];
                                     if(is_blocked == 1)
                                     {
                                         $("#mob_notification").html("User Blocked. Please contact Administrator.");
@@ -82,6 +83,9 @@ $("#validate_mobno").click(function(){
                                     }else if(is_active == 1)
                                     {
                                         $("#otp_div").removeAttr('hidden');
+                                        generate_otp(user_id)
+
+                                        
                                     }
                                     
                                     
@@ -94,3 +98,16 @@ $("#validate_mobno").click(function(){
         });
     }
 });
+function generate_otp(userid)
+{
+    $.ajax
+    ({
+    type: "POST",
+    url: gloabl_url +"include/otp.php",
+    data: {user_id: userid},
+    dataType: 'json',
+    success: function (result)
+    {
+    }
+});
+}
