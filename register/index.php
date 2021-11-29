@@ -21,11 +21,11 @@
                            <input type="hidden" id="lang_value"name="lang_value"/> 
                         </div>
                         
-                        <div class="signup-form"  id="phonenumber_selection" hidden="">
+                        <div class="signup-form"  id="phonenumber_selection" hidden>
                             <h1 class="form-title">Register Mobile No</h1>
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="input_mobileno" id="input_mobileno" placeholder="Your Mobile Number"/>
+                                <input type="text" name="input_mobileno" id="input_mobileno" placeholder="Your Mobile Number" onclick="remove_mobilenotification()"/>
                             </div>
                             <div class="form-group" id="otp_div" hidden>
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
@@ -36,9 +36,10 @@
                                 <input type="button" name="validate_mobno" id="validate_mobno" class="form-submit" value="Validate"/>
                             </div>
                         </div>
-                        <div class="signup-form"  id="shop_selection">
-                            <h1 class="form-title">Choose your Shop</h1>
-                           <input type="hidden" id="lang_value"name="lang_value"/> 
+                        <div class="signup-form"  id="shop_selection" hidden>
+                            <h1 class="form-title">Choose Shop</h1>
+                           <input type="hidden" id="shop_value"name="shop_value"/> 
+
                         </div>
                         
                     </div>

@@ -20,9 +20,9 @@ function get_language()
                         i = 0;
                         for (var i = 0; i < response_length; i++)
                         {
-                            var language_id = result.response[i]['language_id'];
+                            var language_code = result.response[i]['language_code'];
                             var language_name = result.response[i]['language_name'];
-                            strHTML += "<div class='form-group'><input type='radio' name='input_language' id='input_language' class='agree-term input_language' value= '" + language_id + "'onclick='assign_langval(this.value)'/><label for='agree-term' class='label-agree-term'><span><span></span></span>" + language_name + "</label></div>";
+                            strHTML += "<div class='form-group'><input type='radio' name='input_language' id='input_language' class='agree-term input_language' value= '" + language_code + "'onclick='assign_langval(this.value)'/><label for='agree-term' class='label-agree-term'><span><span></span></span>" + language_name + "</label></div>";
                         }
                         strHTML += "<span style='color:red' id='lang_notification'></span><div class='form-group form-button'><input type='button' name='language_button' id='language_button' class='form-submit' value='Next' onclick = 'language_button()'/></div>";
                         $("#language_selection").append(strHTML);
@@ -89,7 +89,10 @@ $("#validate_mobno").click(function () {
                             }
                         } else if (status == 201)
                         {
-                            
+                            $("#phonenumber_selection").attr("hidden", true);
+                            $("#shop_selection").removeAttr('hidden');
+                            get_shop();
+
                         }
                     }
                 });
@@ -107,6 +110,57 @@ function generate_otp(userid)
                 {
                 }
             });
+}
+function get_shop()
+{
+    var lang_val = $("#lang_value").val();
+    var langArr = {'language_code': lang_val};
+    $.ajax
+            ({
+                type: "POST",
+                url: gloabl_url + "api/get_shoptypelist.php",
+                data: JSON.stringify(langArr),
+                dataType: 'json',
+                success: function (result)
+                {
+                    var status = result.status;
+                    if (status == 200)
+                    {
+                        var response_length = result.response.length;
+                        strHTML = "";
+                        i = 0;
+                        for (var i = 0; i < response_length; i++)
+                        {
+                            var shoptype_id = result.response[i]['shoptype_id'];
+                            var shoptype_name = result.response[i]['shoptype_name'];
+                            strHTML += "<div class='form-group'><input type='radio' name='input_language' id='input_language' class='agree-term input_language' value= '" + shoptype_id + "'onclick='assign_shopval(this.value)'/><label for='agree-term' class='label-agree-term'><span><span></span></span>" + shoptype_name + "</label></div>";
+                        }
+                        strHTML += "<span style='color:red' id='shop_notification'></span><div class='form-group form-button'><input type='button' name='shop_button' id='shop_button' class='form-submit' value='Next' onclick = 'shop_button()'/></div>";
+                        $("#shop_selection").append(strHTML);
+                    }
+                }
+            });
+}
+function assign_shopval(shop)
+{
+    $("#shop_value").val(shop);
+    $("#shop_notification").attr("hidden", true);
+}
+function shop_button()
+{
+    var shop_value = $("#shop_value").val();
+    if (shop_value == '')
+    {
+        $("#shop_notification").html("Please select one Shop");
+    } else {
+        $("#language_selection").attr("hidden", true);
+        $("#phonenumber_selection").attr("hidden", true);
+        $("#shop_selection").removeAttr('hidden');
+    }
+}
+function remove_mobilenotification()
+{
+    $("#mob_notification").html("");
 }
 function create_user()
 {
