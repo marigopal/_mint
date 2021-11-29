@@ -100,8 +100,8 @@ function generate_otp(userid)
     $.ajax
             ({
                 type: "POST",
-//                url: gloabl_url + "include/update_otp.php",
-                url: "../../include/update_otp.php",
+               url: gloabl_url + "include/update_otp.php",
+                
                 data: {user_id: userid},
                 dataType: 'json',
                 success: function (result)
