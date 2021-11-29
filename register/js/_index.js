@@ -162,10 +162,7 @@ function remove_mobilenotification()
 {
     $("#mob_notification").html("");
 }
-function create_user()
+function create_shop()
 {
-    var lang_val = $("#lang_value").val();
-    var input_mobileno = $("#input_mobileno").val();
-
-
+    
 }
