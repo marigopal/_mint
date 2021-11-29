@@ -62,19 +62,29 @@ $("#validate_mobno").click(function(){
             success: function (result)
             {
                 var status = result.status;
-                alert(status);
                 if(status == 200)
                 {
                     var response_length = result.response.length;
                     i=0;
                     for (var i = 0; i < response_length; i++)
                         {
-                                    var is_active = result.response[i]['is_active'];
                                     var is_blocked = result.response[i]['is_blocked'];
-                                    if(is_active == 1)
+                                    var is_releaved = result.response[i]['is_releaved'];
+                                    var is_deleted = result.response[i]['is_deleted'];
+                                    var is_admin = result.response[i]['is_admin'];
+                                    var is_active = result.response[i]['is_active'];
+                                    if(is_blocked == 1)
                                     {
-                                        alert("is Delete");
+                                        $("#mob_notification").html("User Blocked. Please contact Administrator.");
+                                    }else if(is_releaved == 1)
+                                    {
+                                        $("#mob_notification").html("User Releaved. Please contact Administrator.");
+                                    }else if(is_active == 1)
+                                    {
+                                        $("#otp_div").removeAttr('hidden');
                                     }
+                                    
+                                    
                                     
                         }
                         
