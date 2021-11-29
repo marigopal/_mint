@@ -36,6 +36,10 @@
                                 <input type="button" name="validate_mobno" id="validate_mobno" class="form-submit" value="Validate"/>
                             </div>
                         </div>
+                        <div class="signup-form"  id="shop_selection">
+                            <h1 class="form-title">Choose your Shop</h1>
+                           <input type="hidden" id="lang_value"name="lang_value"/> 
+                        </div>
                         
                     </div>
                 </div>
