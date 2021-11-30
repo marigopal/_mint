@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group" id="otp_div" hidden>
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="text" name="input_otp" id="input_otp" placeholder="Your OTP"/>
+                                <input type="text" name="input_otp" id="input_otp" placeholder="Your OTP" onclick="remove_notification('mob_notification')"/>
                             </div>
                             <span style='color:red' id='mob_notification'></span>
                             <div class="form-group form-button" id="validate_mobno">

@@ -232,6 +232,11 @@ $(function () {
 $("#validate_mobno_otp").click(function(){
     var input_mobileno = $("#input_mobileno").val();
     var input_otp = $("#input_otp").val();
+    if(input_otp == '')
+    {
+        $("#mob_notification").html("Please Enter OTP");
+    }
+    else{
     $.ajax
     ({
         type: "POST",
@@ -246,9 +251,10 @@ $("#validate_mobno_otp").click(function(){
                 mobileno_validate();
             }
             else{
-                alert("otp invalid");
+                $("#mob_notification").html("Please Enter Valid OTP");
             }
         }
     });
+}
     
 });
