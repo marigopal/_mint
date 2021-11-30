@@ -92,12 +92,14 @@ $("#validate_mobno").click(function () {
                             $("#phonenumber_selection").attr("hidden", true);
                             $("#shop_selection").removeAttr('hidden');
                             get_shop();
+                           
 
                         }
                     }
                 });
     }
 });
+
 function generate_otp(userid)
 {
     $.ajax
@@ -133,7 +135,7 @@ function get_shop()
                         {
                             var shoptype_id = result.response[i]['shoptype_id'];
                             var shoptype_name = result.response[i]['shoptype_name'];
-                            strHTML += "<div class='form-group'><input type='radio' name='input_language' id='input_language' class='agree-term input_language' value= '" + shoptype_id + "'onclick='assign_shopval(this.value)'/><label for='agree-term' class='label-agree-term'><span><span></span></span>" + shoptype_name + "</label></div>";
+                            strHTML += "<div class='form-group'><input type='radio' name='input_shoptype' id='input_shoptype' class='agree-term input_language' value= '" + shoptype_id + "'onclick='assign_shopval(this.value)'/><label for='agree-term' class='label-agree-term'><span><span></span></span>" + shoptype_name + "</label></div>";
                         }
                         strHTML += "<span style='color:red' id='shop_notification'></span><div class='form-group form-button'><input type='button' name='shop_button' id='shop_button' class='form-submit' value='Next' onclick = 'shop_button()'/></div>";
                         $("#shop_selection").append(strHTML);
@@ -155,14 +157,53 @@ function shop_button()
     } else {
         $("#language_selection").attr("hidden", true);
         $("#phonenumber_selection").attr("hidden", true);
-        $("#shop_selection").removeAttr('hidden');
+        $("#shop_selection").attr('hidden',true);
+        $("#name_selection").removeAttr("hidden");
+        
     }
 }
-function remove_mobilenotification()
+function remove_notification(input)
 {
-    $("#mob_notification").html("");
+    $("#" + input).html("");
 }
-function create_shop()
-{
-    
-}
+$("#name_button").click(function(){
+    var lang_value = $("#lang_value").val();
+    var input_mobileno = $("#input_mobileno").val();
+    var shop_value = $("#shop_value").val();
+    var input_fullname = $("#input_fullname").val();
+    var input_shopname = $("#input_shopname").val();
+    var input_referral = $("#input_referral").val();
+    if(input_fullname == '')
+    {
+        $("#name_notification").html("Please Enter the Fullname");
+    }else if(input_shopname == ''){
+        $("#name_notification").html("Please Enter the Shopname");
+    }else{
+        var regArr = {'language_code': lang_value, 'mobile_number' : input_mobileno, 'shop_name' : input_shopname, 'user_fullname' : input_fullname, 'shoptype_id' : shop_value, 'referral_code' : input_referral};
+        $.ajax
+            ({
+                type: "POST",
+                url: gloabl_url + "api/register_shop.php",
+                data: JSON.stringify(regArr),
+                dataType: 'json',
+                success: function (result)
+                {
+                    var status = result.status;
+                    if (status == 200)
+                    {
+                        var response_length = result.response.length;
+                        strHTML = "";
+                        i = 0;
+                        for (var i = 0; i < response_length; i++)
+                        {
+                            var shoptype_id = result.response[i]['shoptype_id'];
+                            var shoptype_name = result.response[i]['shoptype_name'];
+                            strHTML += "<div class='form-group'><input type='radio' name='input_shoptype' id='input_shoptype' class='agree-term input_language' value= '" + shoptype_id + "'onclick='assign_shopval(this.value)'/><label for='agree-term' class='label-agree-term'><span><span></span></span>" + shoptype_name + "</label></div>";
+                        }
+                        strHTML += "<span style='color:red' id='shop_notification'></span><div class='form-group form-button'><input type='button' name='shop_button' id='shop_button' class='form-submit' value='Next' onclick = 'shop_button()'/></div>";
+                        $("#shop_selection").append(strHTML);
+                    }
+                }
+            });
+    }
+});

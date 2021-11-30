@@ -33,6 +33,7 @@ if ($itemCount > 0) {
             $dataArr = array();
             $dataArr[] = array(
                 "user_id" => $user_uid,
+                "primary_language_id" => $primary_language_id
             );
             $response->success_response($dataArr);
         } else {
