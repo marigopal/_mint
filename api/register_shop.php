@@ -29,12 +29,14 @@ if ($itemCount > 0) {
     $item_user->user_fullname = $data->user_fullname;
     $item_user->language_code = $items_lang->language_id;
     $primary_language_id = $items_lang->language_id;
+    $shoptype_id = $data->shoptype_id;
     if ($item_shop->Insert_Shop()) {
         if ($item_user->Inster_User()) {
             $dataArr = array();
             $dataArr[] = array(
                 "user_id" => $user_uid,
-                "primary_language_id" => $primary_language_id
+                "primary_language_id" => $primary_language_id,
+                "shoptype_id" => $shoptype_id
             );
             $response->success_response($dataArr);
         } else {

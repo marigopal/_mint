@@ -196,12 +196,12 @@ $("#name_button").click(function(){
                         i = 0;
                         for (var i = 0; i < response_length; i++)
                         {
-                            var shoptype_id = result.response[i]['shoptype_id'];
-                            var shoptype_name = result.response[i]['shoptype_name'];
-                            strHTML += "<div class='form-group'><input type='radio' name='input_shoptype' id='input_shoptype' class='agree-term input_language' value= '" + shoptype_id + "'onclick='assign_shopval(this.value)'/><label for='agree-term' class='label-agree-term'><span><span></span></span>" + shoptype_name + "</label></div>";
+                            var user_id = result.response[i]['user_id'];
+                            var primary_language_id = result.response[i]['primary_language_id'];
+                            alert(user_id);
+                            alert(primary_language_id);
                         }
-                        strHTML += "<span style='color:red' id='shop_notification'></span><div class='form-group form-button'><input type='button' name='shop_button' id='shop_button' class='form-submit' value='Next' onclick = 'shop_button()'/></div>";
-                        $("#shop_selection").append(strHTML);
+                        
                     }
                 }
             });
