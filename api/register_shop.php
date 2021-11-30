@@ -28,6 +28,7 @@ if ($itemCount > 0) {
     $item_user->shoptype_id = $data->shoptype_id;
     $item_user->user_fullname = $data->user_fullname;
     $item_user->language_code = $items_lang->language_id;
+    $primary_language_id = $items_lang->language_id;
     if ($item_shop->Insert_Shop()) {
         if ($item_user->Inster_User()) {
             $dataArr = array();
