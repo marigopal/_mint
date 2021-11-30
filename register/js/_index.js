@@ -198,8 +198,7 @@ $("#name_button").click(function(){
                         {
                             var user_id = result.response[i]['user_id'];
                             var primary_language_id = result.response[i]['primary_language_id'];
-                            alert(user_id);
-                            alert(primary_language_id);
+                            var shoptype_id = result.response[i]['shoptype_id'];
                         }
                         
                     }
