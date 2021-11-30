@@ -68,6 +68,9 @@ function mobileno_validate() {
                             i = 0;
                             for (var i = 0; i < response_length; i++)
                             {
+                              
+                                var shop_id = result.response[i]['shop_id']; 
+                                var primary_language_id = result.response[i]['primary_language_id'];
                                 var is_blocked = result.response[i]['is_blocked'];
                                 var is_releaved = result.response[i]['is_releaved'];
                                 var is_deleted = result.response[i]['is_deleted'];
@@ -80,8 +83,8 @@ function mobileno_validate() {
                                     $("#otp_div").removeAttr('hidden');
                                     $("#validate_mobno_otp_div").removeAttr('hidden');
                                     $("#validate_mobno").attr("hidden", true);
-                                    }else{
-
+                                }
+                                else{
                                 if (is_blocked == 1)
                                 {
                                     $("#mob_notification").html("User Blocked. Please contact Administrator.");
@@ -90,10 +93,10 @@ function mobileno_validate() {
                                     $("#mob_notification").html("User Releaved. Please contact Administrator.");
                                 } else if (is_active == 1)
                                 {
-                                    
-
-
-window.location.href = "/dashboard/";
+                                    Cookies.set('primary_language_id', primary_language_id);
+                                    Cookies.set('shop_id', shop_id);
+                                    Cookies.set('user_id', user_id);
+                                    window.location.href = "/dashboard/";
                                     
                                 }
                             }
@@ -119,7 +122,6 @@ function generate_otp(userid)
     $.ajax
             ({
                 type: "POST",
-                // url: gloabl_url + "include/update_otp.php",
                 url:  "../../include/update_otp.php",
                 data: {user_id: userid},
                 dataType: 'json',
@@ -225,9 +227,21 @@ $("#name_button").click(function(){
 $(function () {
     if (Cookies.get('primary_language_id')) {
         $("#language_selection").attr("hidden", true);
-        $("#phonenumber_selection").removeAttr("hidden");
+        
 
     }
+    if (Cookies.get('user_id')) {
+        $("#language_selection").attr("hidden", true);
+        $("#phonenumber_selection").attr("hidden", true);
+       
+
+    }
+    if (Cookies.get('shop_id')) {
+        
+        window.location.href = "/dashboard/"   
+
+    }
+
 });
 $("#validate_mobno_otp").click(function(){
     var input_mobileno = $("#input_mobileno").val();
@@ -240,7 +254,6 @@ $("#validate_mobno_otp").click(function(){
     $.ajax
     ({
         type: "POST",
-        // url: gloabl_url + "api/otp_validate.php",
         url: "../../api/otp_validate.php",
         data: {'input_mobileno' : input_mobileno, 'input_otp' : input_otp},
         dataType: 'json',
