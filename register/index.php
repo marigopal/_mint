@@ -33,7 +33,10 @@
                             </div>
                             <span style='color:red' id='mob_notification'></span>
                             <div class="form-group form-button" id="validate_mobno">
-                                <input type="button" name="validate_mobno" id="validate_mobno" class="form-submit" value="Validate"/>
+                                <input type="button" name="validate_mobno" id="validate_mobno" class="form-submit" value="Next" onclick="mobileno_validate()"/>
+                            </div>
+                            <div class="form-group form-button" id="validate_mobno_otp_div" hidden>
+                                <input type="button" name="validate_mobno_otp" id="validate_mobno_otp" class="form-submit" value="Validate"/>
                             </div>
                         </div>
                         <div class="signup-form"  id="name_selection" hidden>
@@ -68,4 +71,5 @@
         <script src="js/main.js"></script>
     </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
+<script src="../template_files/cookie_js/js.cookie.min.js"></script>
 <script src="js/_index.js" type="text/javascript"></script>
