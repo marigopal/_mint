@@ -9,5 +9,7 @@
         <link rel="stylesheet" href="../template_files/fonts/material-icon/css/material-design-iconic-font.min.css">
         <!-- Main css -->
         <link rel="stylesheet" href="../template_files/css/style.css">
+        <link rel="stylesheet" href="../template_files/css/bootstrap-4.min.css">
+        
     </head>
     <body>
